@@ -1,0 +1,18 @@
+{% extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1>Realice sus pagos</h1>
+</div>
+
+
+  <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ payments_form.as_p }}
+        <input type="submit" name="" value="Pagar">
+
+        </form>
+
+
+{% endblock %}

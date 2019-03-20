@@ -17,6 +17,7 @@
 
         {% if user.is_authenticated %}
             <li><a class="navbar-link" href="{% url 'logout' %}">Cerrar sesión</a> </li>
+            <li><a class="navbar-link" href="{% url 'basic_app:payments' %}">Pagos en línea</a> </li>
             {% else %}
             <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a> </li>
             {% endif %}

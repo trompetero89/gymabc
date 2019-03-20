@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from basic_app.forms import UserForm, UserProfileInfoForm
+from basic_app.forms import UserForm, UserProfileInfoForm,PaymentsForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -21,6 +21,15 @@ def special(request):
 def user_logout(request):
     logout(request)
     return  HttpResponseRedirect(reverse('index'))
+
+
+
+
+@login_required
+def payments(request):
+    payments_form = PaymentsForm()
+    return render(request,'basic_app/payments.html',{'payments_form':payments_form})
+
 
 
 
