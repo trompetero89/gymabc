@@ -25,6 +25,10 @@ class Payments(models.Model):
     payment_date = models.DateTimeField()
 
 
+class Menu(models.Model):
+    name = models.CharField(max_length=256)
+    provider = models.CharField(max_length=256)
+
 
 
 
