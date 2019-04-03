@@ -5,7 +5,11 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login,logout
-from django.views.generic import View, TemplateView
+from django.views.generic import (View, TemplateView,
+                                  ListView, DetailView,
+                                  CreateView,UpdateView,
+                                  DeleteView)
+from . import models
 
 # Create your views here.
 
@@ -90,3 +94,23 @@ def user_login(request):
 
     else:
         return render(request,'basic_app/login.html',{})
+
+
+
+class MenuListView(ListView):
+    context_object_name = 'menus'
+    model = models.Menu
+
+class MenuDetailView(DetailView):
+    context_object_name = 'menu_detail'
+    model = models.Menu
+    template_name = 'basic_app/menu_detail.html'
+
+
+class MenuCreateView(CreateView):
+    fields = ('name','provider','location')
+    model = models.Menu
+
+class MenuUpdateView(UpdateView):
+    fields = ('name','provider')
+    model = models.Menu

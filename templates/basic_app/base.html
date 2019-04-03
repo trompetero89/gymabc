@@ -13,6 +13,7 @@
             <li><a class="navbar-brand" href="{% url 'index' %}">Home</a></li>
             <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
             <li><a class="navbar-link" href="{% url 'basic_app:register' %}">Registrarse</a> </li>
+            <li><a class="navbar-link" href="{% url 'basic_app:list' %}">Plan de alimentación</a></li>
 
 
         {% if user.is_authenticated %}

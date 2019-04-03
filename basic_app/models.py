@@ -2,6 +2,7 @@ from _pydecimal import Decimal
 
 from django.db import models
 from  django.contrib.auth.models import User
+from django.urls import reverse
 # Create your models here.
 
 
@@ -28,6 +29,22 @@ class Payments(models.Model):
 class Menu(models.Model):
     name = models.CharField(max_length=256)
     provider = models.CharField(max_length=256)
+    location = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("basic_app:detail",kwargs={"pk":self.pk})
+
+
+class Alimento(models.Model):
+    name = models.CharField(max_length=256)
+    preparacion = models.CharField(max_length=256)
+    menu = models.ForeignKey(Menu,related_name='alimentos',on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 
